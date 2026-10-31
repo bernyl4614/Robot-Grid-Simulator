@@ -1,8 +1,25 @@
+import java.io.*;
+import java.util.ArrayList;
+import java.util.Scanner;
+
 public class Grid {
     private char[][] cells;
 
     public Grid(char[][] cells) {
         this.cells = cells;
+    }
+
+    public static Grid loadFromFile(String filename) throws FileNotFoundException {
+        Scanner fileScanner = new Scanner(new File(filename));
+
+        ArrayList<char[]> rows = new ArrayList<>();
+        while (fileScanner.hasNextLine()) {
+            String line = fileScanner.nextLine();
+            rows.add(line.toCharArray());
+        }
+        fileScanner.close();
+        char[][] cells = rows.toArray(new char[0][]);
+        return new Grid(cells);
     }
 
     public boolean isWithinBounds(int row, int col) {

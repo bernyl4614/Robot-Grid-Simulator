@@ -1,17 +1,10 @@
 import java.util.*;
+import java.io.*;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws FileNotFoundException {
         Scanner sc = new Scanner(System.in);
-        char[][] grid = {
-                "##########".toCharArray(),
-                "#........#".toCharArray(),
-                "#.###....#".toCharArray(),
-                "#...#.#..#".toCharArray(),
-                "#.#.....G#".toCharArray(),
-                "##########".toCharArray()
-        };
-        Grid area = new Grid(grid);
+        Grid area = Grid.loadFromFile("maps/level1.txt");
 
         Robot robot = new Robot(1, 1);
 
