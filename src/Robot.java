@@ -1,10 +1,12 @@
 public class Robot {
     private int row;
     private int column;
+    private int steps;
 
     public Robot(int startRow, int startColumn) {
         row = startRow;
         column = startColumn;
+        steps = 0;
     }
 
     public int getRow() {
@@ -41,6 +43,13 @@ public class Robot {
         if (grid.isWalkable(newRow, newCol)) {
             row = newRow;
             column = newCol;
+            steps++;
         }
     }
+
+    public int getSteps() {
+        return steps;
+    }
+
+
 }

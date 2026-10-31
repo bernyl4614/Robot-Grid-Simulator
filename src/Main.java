@@ -22,6 +22,7 @@ public class Main {
             String command = sc.nextLine().toUpperCase();
 
             robot.move(command, area);
+            System.out.println("Steps taken: " + robot.getSteps());
 
             if (area.isGoal(robot.getRow(), robot.getColumn())) {
                 area.printGrid(robot);
