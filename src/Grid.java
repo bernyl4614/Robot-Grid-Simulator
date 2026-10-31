@@ -16,4 +16,16 @@ public class Grid {
         return isWithinBounds(row, col) && cells[row][col] != '#';
     }
 
+    public void printGrid(Robot robot) {
+        for (int i = 0; i < cells.length; i++) {
+            for (int j = 0; j < cells[i].length; j++) {
+                if (i == robot.getRow() && j == robot.getColumn()) {
+                    System.out.print('R');
+                } else {
+                    System.out.print(cells[i][j]);
+                }
+            }
+            System.out.println();
+        }
+    }
 }

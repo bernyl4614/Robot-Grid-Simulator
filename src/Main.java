@@ -16,7 +16,7 @@ public class Main {
         Robot robot = new Robot(1, 1);
 
         while (true) {
-            printGrid(grid, robot.getRow(), robot.getColumn());
+            area.printGrid(robot);
 
             System.out.print("Move with WASD: ");
             String command = sc.nextLine().toUpperCase();
@@ -24,27 +24,10 @@ public class Main {
             robot.move(command, area);
 
             if (grid[robot.getRow()][robot.getColumn()] == 'G') {
-                printGrid(grid, robot.getRow(), robot.getColumn());
+                area.printGrid(robot);
                 System.out.println("Goal!");
                 break;
             }
-        }
-    }
-
-    public static void printGrid(
-            char[][] grid,
-            int robotRow,
-            int robotCol
-    ) {
-        for (int i = 0; i < grid.length; i++) {
-            for (int j = 0; j < grid[i].length; j++) {
-                if (i == robotRow && j == robotCol) {
-                    System.out.print('R');
-                } else {
-                    System.out.print(grid[i][j]);
-                }
-            }
-            System.out.println();
         }
     }
 }
