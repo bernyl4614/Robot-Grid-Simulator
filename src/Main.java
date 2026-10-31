@@ -12,25 +12,25 @@ public class Main {
                 "##########".toCharArray()
         };
 
-        int robotRow = 1;
-        int robotCol = 1;
+        Robot robot = new Robot(1, 1);
 
         while (true) {
-            printGrid(grid, robotRow, robotCol);
-            System.out.print("Move with WASD");
+            printGrid(grid, robot.getRow(), robot.getColumn());
+
+            System.out.print("Move with WASD: ");
             String command = sc.nextLine().toUpperCase();
 
-            int[] newPosition = movement(command, robotRow, robotCol, grid);
+            int[] newPosition = movement(
+                    command, robot.getRow(), robot.getColumn(), grid
+            );
 
-            robotRow = newPosition[0];
-            robotCol = newPosition[1];
+            robot.setPosition(newPosition[0], newPosition[1]);
 
-            if (grid[robotRow][robotCol] == 'G') {
-                printGrid(grid, robotRow, robotCol);
+            if (grid[robot.getRow()][robot.getColumn()] == 'G') {
+                printGrid(grid, robot.getRow(), robot.getColumn());
                 System.out.println("Goal!");
                 break;
             }
-
         }
     }
 
