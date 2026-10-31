@@ -20,11 +20,7 @@ public class Main {
             System.out.print("Move with WASD: ");
             String command = sc.nextLine().toUpperCase();
 
-            int[] newPosition = movement(
-                    command, robot.getRow(), robot.getColumn(), grid
-            );
-
-            robot.setPosition(newPosition[0], newPosition[1]);
+            robot.move(command, grid);
 
             if (grid[robot.getRow()][robot.getColumn()] == 'G') {
                 printGrid(grid, robot.getRow(), robot.getColumn());
@@ -50,38 +46,4 @@ public class Main {
             System.out.println();
         }
     }
-
-    public static int[] movement(String command, int row, int column, char[][] grid) {
-        int newRow = row;
-        int newCol = column;
-        switch (command) {
-            case "W":
-                newRow--;
-                break;
-
-            case "A":
-                newCol--;
-                break;
-
-            case "S":
-                newRow++;
-                break;
-
-            case "D":
-                newCol++;
-                break;
-
-            default:
-                System.out.println("Invalid command.");
-                return new int[]{row, column};
-        }
-        if (newRow >= 0 && newRow < grid.length && newCol >= 0 && newCol < grid[newRow].length) {
-            if (grid[newRow][newCol] != '#') {
-                return new int[]{newRow, newCol};
-            }
-        }
-        return new int[]{row, column};
-    }
-
-
 }
