@@ -14,11 +14,6 @@ public class Robot {
         return column;
     }
 
-    public void setPosition(int newRow, int newColumn) {
-        row = newRow;
-        column = newColumn;
-    }
-
     public void move(String command, char[][] grid) {
         int newRow = row;
         int newCol = column;
