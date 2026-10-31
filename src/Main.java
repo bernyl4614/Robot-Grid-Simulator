@@ -25,6 +25,12 @@ public class Main {
             robotRow = newPosition[0];
             robotCol = newPosition[1];
 
+            if (grid[robotRow][robotCol] == 'G') {
+                printGrid(grid, robotRow, robotCol);
+                System.out.println("Goal!");
+                break;
+            }
+
         }
     }
 
@@ -46,41 +52,33 @@ public class Main {
     }
 
     public static int[] movement(String command, int row, int column, char[][] grid) {
+        int newRow = row;
+        int newCol = column;
         switch (command) {
             case "W":
-                if (grid[row - 1][column] == '#') {
-                    break;
-                } else {
-                    row--;
-                    break;
-                }
+                newRow--;
+                break;
 
             case "A":
-                if (grid[row][column - 1] == '#') {
-                    break;
-                } else {
-                    column--;
-                    break;
-                }
+                newCol--;
+                break;
 
             case "S":
-                if (grid[row + 1][column] == '#') {
-                    break;
-                } else {
-                    row++;
-                    break;
-                }
+                newRow++;
+                break;
 
             case "D":
-                if (grid[row][column + 1] == '#') {
-                    break;
-                } else {
-                    column++;
-                    break;
-                }
+                newCol++;
+                break;
 
             default:
-                System.out.println("Invalid Command.");
+                System.out.println("Invalid command.");
+                return new int[]{row, column};
+        }
+        if (newRow >= 0 && newRow < grid.length && newCol >= 0 && newCol < grid[newRow].length) {
+            if (grid[newRow][newCol] != '#') {
+                return new int[]{newRow, newCol};
+            }
         }
         return new int[]{row, column};
     }
