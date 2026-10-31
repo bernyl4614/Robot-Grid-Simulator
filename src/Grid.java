@@ -28,4 +28,11 @@ public class Grid {
             System.out.println();
         }
     }
+
+    public boolean isGoal(int row, int col) {
+        if (isWithinBounds(row, col) && cells[row][col] == 'G') {
+            return true;
+        }
+        return false;
+    }
 }

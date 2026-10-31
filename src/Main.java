@@ -23,7 +23,7 @@ public class Main {
 
             robot.move(command, area);
 
-            if (grid[robot.getRow()][robot.getColumn()] == 'G') {
+            if (area.isGoal(robot.getRow(), robot.getColumn())) {
                 area.printGrid(robot);
                 System.out.println("Goal!");
                 break;
