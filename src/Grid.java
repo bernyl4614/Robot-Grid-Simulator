@@ -17,6 +17,15 @@ public class Grid {
             String line = fileScanner.nextLine();
             rows.add(line.toCharArray());
         }
+        if (rows.isEmpty()) {
+            throw new IllegalArgumentException("Map cannot be empty.");
+        }
+        int expectedLength = rows.get(0).length;
+        for (int i = 0; i < rows.size(); i++) {
+            if (rows.get(i).length != expectedLength) {
+                throw new IllegalArgumentException("Rows unequal.");
+            }
+        }
         fileScanner.close();
         char[][] cells = rows.toArray(new char[0][]);
         return new Grid(cells);
