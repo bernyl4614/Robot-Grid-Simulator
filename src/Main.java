@@ -11,6 +11,7 @@ public class Main {
                 "#.#.....G#".toCharArray(),
                 "##########".toCharArray()
         };
+        Grid area = new Grid(grid);
 
         Robot robot = new Robot(1, 1);
 
@@ -20,7 +21,7 @@ public class Main {
             System.out.print("Move with WASD: ");
             String command = sc.nextLine().toUpperCase();
 
-            robot.move(command, grid);
+            robot.move(command, area);
 
             if (grid[robot.getRow()][robot.getColumn()] == 'G') {
                 printGrid(grid, robot.getRow(), robot.getColumn());

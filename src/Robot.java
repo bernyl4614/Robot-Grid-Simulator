@@ -14,7 +14,7 @@ public class Robot {
         return column;
     }
 
-    public void move(String command, char[][] grid) {
+    public void move(String command, Grid grid) {
         int newRow = row;
         int newCol = column;
         switch (command) {
@@ -38,12 +38,9 @@ public class Robot {
                 System.out.println("Invalid command.");
                 return;
         }
-        if (newRow >= 0 && newRow < grid.length && newCol >= 0 && newCol < grid[newRow].length) {
-            if (grid[newRow][newCol] != '#') {
-                row = newRow;
-                column = newCol;
-            }
+        if (grid.isWalkable(newRow, newCol)) {
+            row = newRow;
+            column = newCol;
         }
     }
-
 }
